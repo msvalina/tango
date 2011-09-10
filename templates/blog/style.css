@@ -1,0 +1,21 @@
+/*
+:css comeback: :)
+*/
+
+h1 { font-size: 70pt; }
+
+h1.title {
+    font-size: 78pt;
+    text-align: center;
+    color:green 
+    }
+
+.naslov {
+    font-size: 40pt;
+    color: red
+    }
+
+.tekst{
+    font-size: 40pt;
+    color: blue
+    }
