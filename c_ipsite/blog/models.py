@@ -15,22 +15,15 @@ class Author(models.Model):
 
     def __unicode__(self):
         return self.name
-"""
-class Comment(models.Model):
-    comment_tekst = models.TextField()
-    n_comment = models.IntegerField()
-    comment_author_name = models.CharField(max_length=50)
-    comment_author_email = models.EmailField()
-"""
 
 class Entry(models.Model):
     blog = models.ForeignKey(Blog)
     naslov = models.CharField(max_length=255)
+    slug = models.SlugField(editable=False) # hide from admin
     body_tekst = models.TextField()
     datum_objave = models.DateTimeField()
     datum_izmjene = models.DateTimeField()
     authors = models.ManyToManyField(Author)
-    # comments = models.ForeignKey(Comment)
     
     def __unicode__(self):
         return self.naslov
