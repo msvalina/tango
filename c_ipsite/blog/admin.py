@@ -8,7 +8,6 @@ class EntryInline(admin.StackedInline):
 
 class BlogAdmin(admin.ModelAdmin):
     inlines = [EntryInline]
-    prepopulated_fields = {'slug': ('naslov',)}
 
 admin.site.register(Blog, BlogAdmin)
 
@@ -16,6 +15,9 @@ class AuthorAdmin(admin.ModelAdmin):
     fields = ['name', 'email']
 
 admin.site.register(Author, AuthorAdmin)
+
+#class EntryAdmin(admin.ModelAdmin):
+#    prepopulated_fields = {'slug': ('naslov',)}
 
 admin.site.register(Entry)
     
