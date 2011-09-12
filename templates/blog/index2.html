@@ -1,0 +1,32 @@
+{% if ime_bloga %}
+<h1>Welcome to {{ ime_bloga }}</h1>
+{% else %}
+    <p>Nema ni jedan blog kreiran.</p>
+{% endif %}
+
+{% if zadnji_naslov %}
+    <p> Zadnji naslov: </p> 
+    <ul>
+        <li> {{ zadnji_naslov }} </li>
+    </ul>
+{% else %}
+    <p> nema ni jednog naslova </p>
+{% endif %}
+
+{% if lista_naslova %}
+    <p> Lista zadnjih pet naslova: </p>
+    <ul>
+        {% for entry in lista_naslova %}
+        <li>{{ entry.naslov }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p> Jos nema liste naslova </p>
+{% endif %}
+
+{% for entry in lista_naslova %}
+    <h2>{{ entry.naslov }}</h2>
+    
+    <p>{{ entry.body_tekst }}</p>
+{% endfor %}
+
