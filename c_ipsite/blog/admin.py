@@ -16,9 +16,9 @@ class AuthorAdmin(admin.ModelAdmin):
 
 admin.site.register(Author, AuthorAdmin)
 
-#class EntryAdmin(admin.ModelAdmin):
-#    prepopulated_fields = {'slug': ('naslov',)}
+class EntryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('naslov',)}
 
-admin.site.register(Entry)
+admin.site.register(Entry, EntryAdmin)
     
 

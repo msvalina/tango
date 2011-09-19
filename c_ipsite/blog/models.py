@@ -1,4 +1,6 @@
 from django.db import models
+from django.template.defaultfilters import slugify
+
 
 # Create your models here.
 
@@ -19,11 +21,23 @@ class Author(models.Model):
 class Entry(models.Model):
     blog = models.ForeignKey(Blog)
     naslov = models.CharField(max_length=255)
-    slug = models.SlugField(editable=False) # hide from admin
+    slug = models.SlugField(max_length=50, unique=True, help_text='Jedinstvena vrijednost kreirana iz naslova za potrebe URLa') 
     body_tekst = models.TextField()
     datum_objave = models.DateTimeField()
     datum_izmjene = models.DateTimeField()
     authors = models.ManyToManyField(Author)
-    
+
     def __unicode__(self):
         return self.naslov
+"""
+This ordering = ["name"] bit tells Django that unless an ordering 
+is given explicitly with order_by(), all publishers should be 
+ordered by name.
+"""
+"""
+    def save(self):
+        if not self.id:
+            self.slug = slugify(self.naslov)
+
+        super(Entry, self).save()
+"""
