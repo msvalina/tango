@@ -1,12 +1,20 @@
-<div id=naslov> <h1>{{ naslov }}</h1> </div>
-<div id=tekst> <p>{{ tekst }}</p> </div>
+{% if ime_bloga %}
+<h1>Welcome to {{ ime_bloga }}</h1>
+{% else %}
+    <p>Nema ni jedan blog kreiran.</p>
+{% endif %}
 
-<br>
-<a href="/blog/{{ prethodni_clanak }}/"> prethodni članak </a>
-<br>
-<a href="/blog/{{ slijedeci_clanak }}/"> slijedeći članak </a>
-<br>
-<a href="/blog/"> početna </a>
+{% if ent %}
+    {% for entry in ent %}
+        <h2>{{ entry.naslov }}</h2>
+        <p>{{ entry.body_tekst }}</p>
+    {% endfor %}
+{% else %}
+    <p> jos ne radi </p>
+{% endif %}
 
-<div id=komentari> {{ komentari }} </div>
-
+{% if test %}
+{{ test }}
+{% else %}
+    <p> jos nema testa </p>
+{% endif %}
