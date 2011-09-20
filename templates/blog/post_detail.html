@@ -1,7 +1,7 @@
 {% if ime_bloga %}
 <h1>Welcome to {{ ime_bloga }}</h1>
 {% else %}
-    <p>Nema ni jedan blog kreiran.</p>
+    <p>Ni jedan blog kreiran.</p>
 {% endif %}
 
 {% if ent %}
@@ -10,7 +10,7 @@
         <p>{{ entry.body_tekst }}</p>
     {% endfor %}
 {% else %}
-    <p> nema postova ups :S</p>
+    <p> nema posta ili je fail kod dohvacanja iz baze </p>
 {% endif %}
 
-month archive radi ocit :D
+hmm slug izgleda radi ^.*
