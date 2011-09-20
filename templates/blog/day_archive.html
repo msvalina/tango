@@ -1,0 +1,16 @@
+{% if ime_bloga %}
+<h1>Welcome to {{ ime_bloga }}</h1>
+{% else %}
+    <p>Nema ni jedan blog kreiran.</p>
+{% endif %}
+
+{% if ent %}
+    {% for entry in ent %}
+        <h2>{{ entry.naslov }}</h2>
+        <p>{{ entry.body_tekst }}</p>
+    {% endfor %}
+{% else %}
+    <p> nema postova za današnji dan, ups ^^</p>
+{% endif %}
+
+day archive radi ocito :D
