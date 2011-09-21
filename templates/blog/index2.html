@@ -1,3 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %} funnyy blog {% endblock %}
+
+{% block content %}
+
 {% if ime_bloga %}
 <h1>Welcome to {{ ime_bloga }}</h1>
 {% else %}
@@ -16,8 +22,8 @@
 {% if lista_naslova %}
     <p> Lista zadnjih pet naslova: </p>
     <ul>
-        {% for entry in lista_naslova %}
-        <li>{{ entry.naslov }}</li>
+        {% for object in lista_naslova %}
+        <li><a href="{{ object.get_absolute_url }}">{{ object.naslov }}</a></li>
         {% endfor %}
     </ul>
 {% else %}
@@ -30,3 +36,4 @@
     <p>{{ entry.body_tekst }}</p>
 {% endfor %}
 
+{% endblock %}

@@ -1,3 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %} funnyy blog {% endblock %}
+
+{% block content %}
+
 {% if ime_bloga %}
 <h1>Welcome to {{ ime_bloga }}</h1>
 {% else %}
@@ -14,3 +20,5 @@
 {% endif %}
 
 month archive radi ocit :D
+
+{% endblock %}

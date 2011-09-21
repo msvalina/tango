@@ -1,5 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+import datetime
 
 
 # Create your models here.
@@ -23,21 +24,18 @@ class Entry(models.Model):
     naslov = models.CharField(max_length=255)
     slug = models.SlugField(max_length=50, unique=True, help_text='Jedinstvena vrijednost kreirana iz naslova za potrebe URLa') 
     body_tekst = models.TextField()
-    datum_objave = models.DateTimeField()
+    datum_objave = models.DateTimeField(default=datetime.datetime.now)
     datum_izmjene = models.DateTimeField()
     authors = models.ManyToManyField(Author)
 
     def __unicode__(self):
         return self.naslov
-"""
-This ordering = ["name"] bit tells Django that unless an ordering 
-is given explicitly with order_by(), all publishers should be 
-ordered by name.
-"""
-"""
-    def save(self):
-        if not self.id:
-            self.slug = slugify(self.naslov)
 
-        super(Entry, self).save()
-"""
+    @models.permalink
+    def get_absolute_url(self):
+        return ('blog_detail', (), { 
+            'year' : self.datum_objave.year, 
+            'month': self.datum_objave.strftime('%m'), 
+            'day' : self.datum_objave.strftime('%d'),
+            'slug' : self.slug
+            })

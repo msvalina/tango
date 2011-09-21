@@ -1,29 +1,11 @@
-<html>
-<head> 
-<title>///</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-<style type=text/css>
-h1 {font-size:70pt; color:red; margin:1 0 0 1;}
-h1.title {color:blue;}
-#naslov {font-size:15pt; text-align: center; color:green; }
-#tekst {font-size:15pt; text-align: center }
-</style>
-</head>
-<body>
-<h1 class="title">test</h1>
-<br>
-{% if zadnji_naslov %}
-<div id="naslov"> <a href="/blog/">{{ zadnji_naslov }} </a></div>
-<div id="tekst"> {{ zadnji_tekst}} </div>
-<br>
-<a href="/blog/{{ prethodni_clanak }}">prethodni clanak </a>
-{% else %}
-<p> Nema naslova u bazi podataka </p>
-{% endif %}
+{% extends "base.html" %}
 
-<pre>
-Treba naslov bacit u jedan div,
-a tekstov u drugi div 
-te ih rasporedit 
-</pre>
-</body>
+{% block title %} funnyy blog {% endblock %}
+
+{% block content %}
+{% for entry in lista_naslova %}
+    <a href="{{entry.get_absolute_url }}">{{entry.naslov }}</a>
+    <h2>{{ entry.naslov }}</h2></a>
+    <p>{{ entry.body_tekst }} </p>
+{% endfor %}
+{% endblock %}
