@@ -1,4 +1,5 @@
-# Django settings for c_ipsite project.
+# Django settings for tango project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -8,11 +9,12 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+HOME = os.environ['HOME']
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/home/mesx/source/django/c_ipsite/sqlite.db',                      # Or path to database file if using sqlite3.
+        'NAME': HOME + '/geek/source/tango/tango/sqlite.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -100,10 +102,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'c_ipsite.urls'
+ROOT_URLCONF = 'tango.urls'
 
 TEMPLATE_DIRS = (
-    "/home/mesx/c_ipsite/templates"
+    HOME + "/geek/source/tango/templates"
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
